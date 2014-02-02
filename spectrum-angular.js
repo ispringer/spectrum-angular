@@ -111,19 +111,17 @@ angular.module('spectrum', [])
         $spectrumHelper.initOptions(scope, span, attrs, ngModel, defaultOptions);
 
       if (!options.flat) {
-        $spectrumHelper.logError('Use spectrum directive, rather than spectrumFlat directive.');
+        $spectrumHelper.logError('Use spectrum directive, rather than spectrum-flat directive.');
         return;
       }
 
-      // when the 'flat' option is true, spectrum cannot render
-      // itself correctly unless its parent element is visible,
-      // so in that case, hold off on initializing spectrum until
-      // the first time its parent becomes visible.        
+      // When the 'flat' option is true, spectrum cannot render itself correctly unless its parent element is visible,
+      // so in that case, hold off on initializing spectrum until the first time its parent becomes visible.        
       scope.init = function() {
         var initialized = $spectrumHelper.isSpectrumInitialized(span);
         if (!initialized && element.parent().is(':visible')) {
           initialized = true;
-          $timeout(function() {
+          $timeout(function() {                        
             options.color = ngModel.$viewValue || '';
             $log.info('Initializing spectrum with options:', options);
             span.spectrum(options);
