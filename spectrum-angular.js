@@ -118,7 +118,7 @@ angular.module('spectrum', [])
 
   function initSpectrum(ngModel, input, options) {
     options.color = ngModel.$viewValue || '';
-    console.log('Initializing spectrum with options:', options);
+    $log.info('Initializing spectrum with options:', options);
     input.spectrum(options);
   }
 
