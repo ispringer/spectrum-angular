@@ -1,5 +1,5 @@
 /*!
- * Spectrum Angular v0.9
+ * Spectrum Angular v0.9.1
  * https://github.com/ispringer/spectrum-angular
  *
  * Copyright 2014, Ian Springer
@@ -102,14 +102,9 @@ angular.module('spectrum', [])
   }
 
   function initFlatSpectrumIfParentVisible(element, ngModel, options) {
-    if (element.parent().is(':visible')) {
-      $timeout(function() {
-        var input = element.find('input');
-        initSpectrum(ngModel, input, options);
-        setTimeout(function() {
-          input.spectrum('reflow');
-        }, 2000);
-      });
+    if (element.parent().is(':visible')) {  
+      var input = element.find('input');
+      initSpectrum(ngModel, input, options);      
       return true;
     } else {
       return false;
@@ -118,8 +113,9 @@ angular.module('spectrum', [])
 
   function initSpectrum(ngModel, input, options) {
     options.color = ngModel.$viewValue || '';
-    $log.info('Initializing spectrum with options:', options);
+    console.log('Initializing spectrum with options:', options);
     input.spectrum(options);
+    input.spectrum('reflow'); 
   }
 
   return {
