@@ -8,7 +8,7 @@
 
 angular.module('spectrum', [])
 
-.directive('spectrum', function($log, $window, $timeout) {
+.directive('spectrum', function($log, $window) {
   var DEFAULT_OPTIONS = {
     preferredFormat: 'hex6',
     showInput: true,
